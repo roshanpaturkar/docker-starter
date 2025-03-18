@@ -21,6 +21,7 @@
 	// "customizations": {},
 
 	// Docker test
+	"mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
 	"runArgs": [
 		"--privileged",
 		"--cap-add=NET_ADMIN",
