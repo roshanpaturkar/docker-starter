@@ -21,12 +21,13 @@
 	// "customizations": {},
 
 	// Docker test
-	"mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
-	"runArgs": [
-		"--privileged",
-		"--cap-add=NET_ADMIN",
-		"--cap-add=MKNOD"
-	]
+	// "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
+	// "runArgs": [
+	//	"--privileged",
+	//	"--cap-add=NET_ADMIN",
+	//	"--cap-add=MKNOD"
+	// ]
+	"onCreateCommand": "docker run -it --rm --privileged -v /tmp/envbuilder:/workspaces -e ENVBUILDER_GIT_URL=https://github.com/coder/envbuilder -e ENVBUILDER_DEVCONTAINER_DIR=/workspaces/envbuilder/examples/docker/03_dind_feature -e ENVBUILDER_INIT_SCRIPT=bash ghcr.io/coder/envbuilder:latest"
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
