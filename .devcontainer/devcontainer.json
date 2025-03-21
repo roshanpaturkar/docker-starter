@@ -28,10 +28,10 @@
 	//	"--cap-add=MKNOD"
 	// ]
 	//"onCreateCommand": "docker run -it --rm --privileged -v /tmp/envbuilder:/workspaces -e ENVBUILDER_GIT_URL=https://github.com/coder/envbuilder -e ENVBUILDER_DEVCONTAINER_DIR=/workspaces/envbuilder/examples/docker/03_dind_feature -e ENVBUILDER_INIT_SCRIPT=bash ghcr.io/coder/envbuilder:latest"
-	"postCreateCommand": "bash /post-create.sh",
-  	"mounts": [
-    		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
-  	],
+	// "postCreateCommand": "bash /post-create.sh",
+  	// "mounts": [
+    // 		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  	// ],
 	"build": {
 		"dockerfile": "Dockerfile"
 	}
