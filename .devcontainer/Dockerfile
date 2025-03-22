@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/devcontainers/base:jammy
 
 # Install envbuilder
 RUN curl -fsSL https://raw.githubusercontent.com/envbuilder/envbuilder/main/install.sh | bash

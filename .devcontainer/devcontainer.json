@@ -3,10 +3,14 @@
 {
 	"name": "Ubuntu",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:jammy",
-	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
-	},
+	// "image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile"
+    }
+	// "features": {
+	// 	"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	// },
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -31,10 +35,10 @@
 	// "postCreateCommand": "bash /post-create.sh",
   	// "mounts": [
     // 		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
-  	// ],
-	"build": {
-		"dockerfile": "Dockerfile"
-	}
+  	// ]
+	// "build": {
+	// 	"dockerfile": "Dockerfile"
+	// }
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
