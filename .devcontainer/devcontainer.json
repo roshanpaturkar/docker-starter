@@ -6,5 +6,6 @@
     "onCreateCommand": "/on-create.sh",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    }
+    },
+    "privileged": true
 }
