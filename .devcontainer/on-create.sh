@@ -12,7 +12,7 @@ sudo ln -s /run /var/run
 # run as root. It will take care of starting the
 # daemon and adding the ubuntu user to the docker
 # group.
-sudo /usr/local/share/docker-init.sh
+sudo /usr/local/share/docker-init.sh    
 
 # Change the owner of the Docker socket so that the non-root user can use it.
 sudo chown ubuntu:docker /var/run/docker.sock

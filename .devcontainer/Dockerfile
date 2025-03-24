@@ -13,7 +13,7 @@ RUN apt-get update && \
 ADD on-create.sh /on-create.sh
 
 # Switch to the non-root user.
-#USER ubuntu
+USER ubuntu
 
 # The devcontainer feature provides /usr/local/share/docker-init.sh
 # which will handle most of the steps of setting up Docker.

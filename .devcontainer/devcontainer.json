@@ -1,26 +1,9 @@
 {
-    "name": "Ubuntu",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    "privileged": true,
-    "capAdd": ["SYS_ADMIN", "NET_ADMIN", "DAC_OVERRIDE", "SETUID", "SETGID"],
-    "runArgs": [
-        "--privileged",
-        "--security-opt",
-        "apparmor=unconfined",
-        "--security-opt",
-        "seccomp=unconfined",
-        "--tmpfs",
-        "/tmp"
-    ],
-    "mounts": [
-        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
-    ],
-    "onCreateCommand": "/on-create.sh",
-    "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    },
-    "postCreateCommand": "sudo /bin/sh /on-create.sh",
-    "remoteUser": "root"
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "onCreateCommand": "/on-create.sh",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  }
 }
