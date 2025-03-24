@@ -3,9 +3,11 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "onCreateCommand": "/on-create.sh",
+    "onCreateCommand": "sudo /on-create.sh",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
-    "privileged": true
+    "privileged": true,
+    "postCreateCommand": "sudo /bin/sh /on-create.sh",
+    "remoteUser": "root"
 }
