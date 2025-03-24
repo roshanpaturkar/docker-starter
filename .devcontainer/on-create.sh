@@ -2,29 +2,17 @@
 
 set -euo pipefail
 
-# Fix /var/run symlink issue (only if needed)
-if [ ! -L /var/run ] && [ ! -d /var/run ]; then
-  sudo ln -s /run /var/run
-else 
-  echo "Warning: /var/run already exists!" >&2
-fi
+# Known issue: Kaniko does not symlink /run => /var/run properly.
+# This results in /var/run/ being owned by root:root which interferes
+# with accessing the Docker socket even if the permissions are set
+# correctly. Workaround: symlink it manually
+sudo ln -s /run /var/run
 
-# Ensure docker-init.sh exists before running
-if [ -f /usr/local/share/docker-init.sh ]; then
-  sudo /usr/local/share/docker-init.sh
-else
-  echo "Error: docker-init.sh not found!" >&2
-  exit 1
-fi
+# Run the docker init script. This needs to be
+# run as root. It will take care of starting the
+# daemon and adding the ubuntu user to the docker
+# group.
+sudo /usr/local/share/docker-init.sh
 
-# Restart Docker to ensure /var/run/docker.sock exists
-sudo systemctl restart docker || sudo dockerd &
-sleep 5
-
-# Fix Docker socket permissions (only if it exists)
-if [ -S /var/run/docker.sock ]; then
-  sudo chown ubuntu:docker /var/run/docker.sock
-else
-  echo "Error: /var/run/docker.sock not found!" >&2
-  exit 1
-fi
+# Change the owner of the Docker socket so that the non-root user can use it.
+sudo chown ubuntu:docker /var/run/docker.sock

@@ -5,5 +5,15 @@
     "onCreateCommand": "ls / && /on-create.sh",
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    }
+    },
+    "privileged": true,
+    "capAdd": ["SYS_ADMIN", "NET_ADMIN"],
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+        "source=/sys/kernel/security,target=/sys/kernel/security,type=bind",
+        "source=/tmp,target=/tmp,type=bind"
+    ],
+    "runArgs": ["--privileged", "--network=host"],
+    "postCreateCommand": "/bin/sh /on-create.sh",
+    "remoteUser": "vscode"
 }
