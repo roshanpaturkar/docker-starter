@@ -15,4 +15,4 @@ sudo ln -s /run /var/run
 sudo /usr/local/share/docker-init.sh    
 
 # Change the owner of the Docker socket so that the non-root user can use it.
-sudo chown ubuntu:docker /var/run/docker.sock
+sudo chown vscode:docker /var/run/docker.sock
